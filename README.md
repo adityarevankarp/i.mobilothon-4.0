@@ -37,7 +37,8 @@ ___
 ---
 
 ## Output
-![image](https://github.com/user-attachments/assets/4e01c8da-faef-4f89-ab40-f940156a1960)
+![image](https://github.com/user-attachments/assets/aaa13ff0-2ed8-4853-8ec4-6e01831d289f)
+
 ___
 
 ## Setup and Installation
