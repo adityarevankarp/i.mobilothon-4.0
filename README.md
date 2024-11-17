@@ -1,49 +1,107 @@
-# Crowd Estimation using YOLOv8 and Deep SORT
+# Lane Change Safety System
 
-This repository contains the implementation of a crowd estimation system using the YOLOv8 (You Only Look Once version 8) object detection algorithm and the Deep SORT (Simple Online and Realtime Tracking with a Deep Association Metric) algorithm. The system can detect and track people in video streams, providing an estimation of the crowd count in real-time.
+## Overview
+The **Lane Change Safety System** enhances driving safety by detecting and tracking vehicles in adjacent lanes, calculating their relative speeds, and issuing alerts for unsafe lane changes. Using YOLO, DeepSORT, and Time-to-Collision (TTC) algorithms, this system provides an early warning mechanism to prevent potential collisions.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Modifications to Deep SORT](#modifications-to-deep-sort)
-
-## Introduction
-
-Crowd estimation is a critical task for public safety and management. This project leverages the power of YOLOv8 for object detection and Deep SORT for tracking to estimate the number of people in a given frame or video stream. The combined approach allows for accurate and efficient real-time crowd estimation.
+---
+![image](https://github.com/user-attachments/assets/a420daf0-63b6-4545-bf2f-e3b1d7d65fe1)
+___
 
 ## Features
+- **Object Detection**: Detects cars, trucks, and bikes using the YOLO model.
+- **Object Tracking**: Tracks detected objects with unique IDs across frames using DeepSORT.
+- **Speed Estimation**: Calculates relative speeds of tracked objects using optical flow and TTC.
+- **Alert System**: Notifies drivers of potential collision risks based on speed and TTC analysis.
 
-- Real-time person detection using YOLOv8.
-- Robust tracking of detected persons with Deep SORT.
-- Accurate crowd count estimation.
-- Easy integration with various video input sources (e.g., video files, webcams).
 
-## Installation
+___
+![image](https://github.com/user-attachments/assets/dfe15d0b-ab84-4ec6-8f65-b83daac45634)
+___
 
-To get started with this project, follow these steps:
 
-1. **Clone the repository:**
+## Project Architecture
+1. **YOLO Object Detection**: Identifies vehicles in each frame with bounding boxes.
+2. **DeepSORT Tracking**: Maintains object IDs for continuity across frames.
+3. **Speed Estimation**: Calculates relative speed using TTC and displays it with the bounding boxes.
+4. **Alert System**: Issues warnings if unsafe lane change conditions are detected.
 
-   ```bash
-   git clone https://github.com/KalmathAjay/Crowd-Estimation-using-YOLO-and-Deep-SORT.git
-   cd Crowd-Estimation-using-YOLO-and-Deep-SORT
-   ```
+---
 
-2. **Install the required dependencies:**
+## Technologies Used
+- **YOLO (You Only Look Once)**: Object detection.
+- **DeepSORT**: Tracking objects across video frames.
+- **OpenCV**: Video frame processing and optical flow.
+- **Python**: Core programming language.
+- **TTC Algorithm**: Time-to-collision computation.
 
-   All dependencies can be installed using the provided requirements.txt file.
+---
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Output
+![image](https://github.com/user-attachments/assets/4e01c8da-faef-4f89-ab40-f940156a1960)
+___
 
-3. **Download YOLOv8 weights:**
+## Setup and Installation
 
-Download the pre-trained YOLOv8 weights from the [Ultralytics repository](https://github.com/ultralytics/ultralytics).
-Place the weights file in the model_data directory.
+### Clone the Repository
+```bash
+git clone https://github.com/your-username/lane-change-safety-system.git
+cd lane-change-safety-system
+```
 
-## Modifications to Deep SORT
 
-Changes were made to the original Deep SORT implementation to support TensorFlow for compatibility with this project. The modified Deep SORT implementation is based on the original repository [Deep SORT](https://github.com/nwojke/deep_sort).
+## Install Dependencies
+ Ensure Python 3.8+ is installed. Then, run:
+```bash
+pip install -r requirements.txt
+```
+
+## Download YOLO Weights
+### Download YOLO pre-trained weights from YOLO's official site.
+### Save the weights file in the weights/ directory.
+
+## Run the System
+```bash
+python lane_safety_system.py --input <path_to_video_file> --output <path_to_output_file>
+```
+### Replace <path_to_video_file> with your video input and <path_to_output_file> with your desired output location.
+
+## Usage
+- Processes video footage (e.g., dashcam).
+- Detects vehicles and assigns bounding boxes with unique IDs and speed labels.
+- Displays alerts in unsafe conditions and outputs the annotated video.
+
+## Future Improvements
+- **Real-Time Processing:** Enable live video feed processing.
+- **V2X Communication::** Add Vehicle-to-Everything (V2X) for broader situational awareness.
+- **Enhanced Alerts::** Implement visual/audible alerts for better driver attention.
+- **Multi-Lane Awareness::** Extend support to track vehicles across multiple lanes.
+- **Emergency Braking::** Integrate with braking systems to prevent collisions.
+
+## Limitations
+- Works with video files only (not real-time).
+- Speed accuracy depends on frame rate and camera calibration.
+- Only detects objects visible in the camera’s field of view.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
